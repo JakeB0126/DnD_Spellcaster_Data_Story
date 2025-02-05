@@ -205,7 +205,7 @@ impact class choices? These foundational insights set the stage for deeper explo
 
 # Load big dataset
 zip_path = "over_one_mil_chars.zip"
-df = pd.read_csv(zip_path, compression='zip')
+df = pd.read_csv(zip_path, compression='zip', usecols=["class_starting"])
 
 # Filter for only spellcasting classes
 selected_classes = ["Bard", "Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"]

@@ -58,46 +58,27 @@ st.markdown("""
 # INTRODUCTION
 # -----------------------------------------------------------
 
-st.title("The Spellcaster’s Compendium: A Data-Driven Look at D&D’s Main Magic-Wielders")
+st.title("The Spellcaster's Compendium: A Data-Driven Look at D&D's Main Magic-Wielders")
 
 st.write("""
-Welcome, seeker of arcane knowledge. You stand before a vast collection of records detailing the choices of countless adventurers. This is no ordinary archive; 
-it offers a glimpse into the very nature of spellcasters themselves.
+Welcome, seeker of arcane knowledge. This archive captures how players build spellcasters in Dungeons & Dragons, where magic comes from study, faith, or pacts.
 
-These records originate from Dungeons & Dragons (D&D), a roleplaying game where players create characters, embark on adventures, and shape the world through 
-their decisions. Among its many classes, spellcasters wield extraordinary power,  drawing magic from divine blessings, arcane study, or otherworldly pacts.
+Even with endless choice, patterns emerge. By examining real player data, we can see how tradition, optimization, and storytelling shape spellcaster creation.
 
-Yet, even in a world of limitless choice, patterns emerge.
-
-While character creation is an art, it is shaped by storytelling, optimization, and personal preference. Across thousands of tables and millions of campaigns, 
-the collective imagination of the D&D community begins to take form in trends that extend beyond a single roll of the dice.
-
-This compendium of spellcasters uncovers the trends that define these magical classes. By analyzing real player choices, we reveal how meta, tradition, and 
-storytelling shape spellcaster creation across countless campaigns.
-
-Whether you’re crafting your first spellcaster or simply curious about the spellcasting realm of D&D, this exploration of data will unveil the hidden forces 
-behind character trends, letting you step into the mind of thousands of players before you. Because in the world of fantasy roleplaying, even the most unique 
-characters are shaped by the choices that came before them.
+Whether you are crafting your first spellcaster or simply curious, this compendium highlights the trends that define these magical classes.
 """)
 
 st.subheader("The Quest for Data: A Research Journey")
 
 st.write("""
-Like any great adventure, this story started with a search for knowledge. So, like a Wizard sifting through ancient tomes, 
-this research required patience and persistence. The main dataset was unearthed through Kaggle, a trove of user-generated data. The user created 
-this dataset by extracting over 1.2 million entries of player information from D&D, the official online resource for Dungeons & Dragons.But while Kaggle 
-was promising, a dataset with some more unique information was required.  
-
-Through Reddit forums (modern-day taverns filled with countless explorers swapping tales), I encountered a question posed by a user about D&D. After clicking 
-through the multitude of links and experiencing many unusable datasets, I finally managed to find one with promise. After removing duplicates through data cleaning, 
-it shrank from over 10,000 entries to a more refined 7,000. This was the only 
+Like any great adventure, this story began with a search for knowledge. The main dataset came from Kaggle, built from over 1.2 million D&D Beyond entries. 
+To capture richer details, I found a second dataset through Reddit. After cleaning duplicates, it narrowed from 10,000+ entries to about 7,000 usable records.
 """) 
 
 st.subheader("The Evolution of the Story: Narrowing the Scope")
 
 st.write("""
-Originally, this study aimed to analyze all twelve D&D classes and even explore the geographical distribution of players. However, creating a data story is not a 
-linear path but instead a journey with many twists and turns that must stay within the confines of the data.  
+Originally, this study aimed to analyze all twelve classes and player geography. The data itself made that scope less useful, so the story narrowed to what it could support.
 
 **Key Challenges:**
 """)
@@ -109,9 +90,8 @@ made for limited insights.
 """)
 
 st.write("""
-Thus, a decision was made: focus solely on the six spellcasting classes—Bard, Cleric, Druid, Sorcerer, Warlock, and Wizard. These classes brought forth unique categories, 
-such as favorite spells, which gave the data a clear purpose beyond just "who picks what." By limiting the scope, the story became more cohesive, highlighting what 
-makes each member of the arcane distinct.
+Thus, the focus became the six spellcasting classes: Bard, Cleric, Druid, Sorcerer, Warlock, and Wizard. This kept the story cohesive and enabled deeper categories, 
+like spell choice, that reveal what makes each class distinct.
 """)
 
 # Image file paths
@@ -150,7 +130,7 @@ with col6:
 st.subheader("Unveiling the Magic: Why Data Visualization Matters")
 
 st.write("""
-In a game as limitless as D&D, every player has their own interpretation of what a Warlock should look like or which spells a Wizard should prepare. Visualizing this data lets us uncover:
+In a game as limitless as D&D, every player has their own take on a Warlock or Wizard. Visualizing the data helps reveal:
 """)
 
 st.write("""
@@ -160,38 +140,34 @@ st.write("""
 """)
 
 st.write("""
-With over a million character entries, these visualizations translate an unimaginable amount of raw numbers into digestible insights. This, in turn, 
-makes the vast landscape of player choices more accessible to all.  
+With over a million character entries, these visuals turn raw numbers into clear, accessible insights.  
 """)
 
 st.subheader("The Dark Side of the Arcane: Potential Pitfalls")
 
 st.write("""
-Yet, even with a powerful spell like Wish, one cannot alter one fundamental truth: data is only as reliable as its source. While these datasets offer incredible insights, 
-they are shaped by the players who chose to record their characters. This introduces potential biases:
+Even a Wish spell cannot change one truth: data reflects who chose to record it. These datasets offer insight, but carry biases:
 """)
 
 st.write("""
-- **Certain players could be overrepresented:** Additional content—including more races, subclasses, and spells—is behind a paywall. This skews the 
-data toward free options available to all players.  
-- **The dataset comes from an online source:** This means it essentially excludes anyone who plays with paper and pencil.  
-- **Zero-values may skew results:** Removing players with 0 gold or 0 personal notes might distort actual player trends.  
-- **Handling outliers:** Setting a cap on gold (e.g., 350,000) may not have been the best way to manage extreme values.  
+- **Paywalled content bias:** Free options may be overrepresented.  
+- **Online-only source:** Paper-and-pencil players are largely excluded.  
+- **Zero values and outliers:** Removing zeros and capping gold can shift averages.  
 """)
 
 st.write("""
-These ethical considerations will be explored further in the analysis, but it’s essential to acknowledge the limitations of any dataset before drawing conclusions.
+These limits do not invalidate the data, but they do shape how we interpret it.
 """)
 
 st.write("""
 ### Preparing the Dataset for Analysis: General Transformations
-To ensure the dataset was ready for meaningful visualizations, several transformations and cleaning steps were applied:
-- **Duplicate Removal:** Removed duplicate entries from the smaller dataset to ensure each player character record was unique.
-- **Filtering for Spellcasting Classes:** Filtered data to focus on six spellcasting classes—Bard, Cleric, Druid, Sorcerer, Warlock, and Wizard.
-- **Counting Player Numbers:** The `value_counts()` function was used to calculate the total number of players for each class. This aggregation was necessary to compare class popularity directly.
-- **Custom Color Mapping:** A custom color palette, directly inspired by the official D&D character sheet themes was applied to enhance the chart's aesthetic and readability.
+To prepare the data for visualization, I:
+- Removed duplicate entries from the smaller dataset.
+- Filtered to six spellcasting classes.
+- Counted class totals for direct comparison.
+- Applied a custom D&D-inspired color palette.
 
-These steps allowed the data to reveal clear and compelling insights about how players craft their spellcasters.
+These steps keep the analysis focused and readable.
 """)
 
 # -----------------------------------------------------------
@@ -259,16 +235,13 @@ with st.expander("Number of Players Per Spellcasting Class"):
 st.subheader("Context & Insight:")
 
 st.write("""
-This bar chart provides an overview of the popularity of each spellcasting class among D&D players. Wizards emerge as the 
-most popular class, closely followed by Clerics, indicating a preference for classes with versatility and strong roles in 
-combat and strategy. Druids, while still popular, appear slightly less represented. This could be due to the fact that Druids
-are less straightforward than Clerics and Wizards and somewhat unknown to newcomers. 
+This bar chart shows overall class popularity. Wizards lead, with Clerics close behind, suggesting a strong preference for versatile roles. Druids are slightly less represented, possibly due to their higher learning curve.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-**Formatting Data for Visualization:** The aggregated data was converted into a DataFrame with two columns: "Class" and "Number of Players." This structure was ideal for generating a bar chart.
+**Formatting for Visualization:** Aggregated counts were reshaped into a simple two-column table for plotting.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -331,22 +304,19 @@ with st.expander("Spellcasting Class Popularity Across Level Ranges"):
 st.subheader("Context & Insights:")
 
 st.write("""
-This grouped bar chart illustrates the relative popularity of the six spellcasting classes across different level ranges. By analyzing how player preferences 
-change as characters level up, we can see further into the progression of campaigns and class dynamics.   
+This grouped bar chart compares class popularity across level ranges, showing how preferences shift as characters level up.   
 
 #### Key Observations:         
-- **Lower Levels (1–5):** Wizards and Clerics dominate, likely due to their utility in the early stages of campaigns.
-- **Mid-Levels (6–15):** Popularity balances out as most classes maintain steady representation, showcasing the general flexibility and likeability of spellcasters.
-- **High Levels (16–20):** Wizards become overwhelmingly popular, reflecting their appeal as late-game powerhouses with unmatched magical potential. Later in the game,
-Wizards get access to the greatest number of spells giving them an immensely powerful repertoire. 
+- **Lower Levels (1-5):** Wizards and Clerics dominate, likely due to their utility in the early stages of campaigns.
+- **Mid-Levels (6-15):** Popularity evens out as most classes stay steady.
+- **High Levels (16-20):** Wizards surge, reflecting late-game spell power and versatility.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Binning Character Levels:** The `total_level` column was divided into four ranges: 1–5, 6–10, 11–15, and 16–20, allowing for analysis of player preferences across stages of character progression.
-- **Grouping by Class and Level Range:** The dataset was grouped by `class_starting` and `level_range` to calculate the total number of players within each class-level range combination.
-- **Converting Counts to Percentages:** Raw counts were converted into percentages of the total players within each level range to allow for meaningful comparisons.
+- **Binning Levels:** `total_level` was grouped into four ranges.
+- **Grouping and Percentages:** Counts per class-range were converted to percentages for comparison.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -355,8 +325,7 @@ st.write("""
 
 st.header("Arc 2: Defining the Arcane")
 
-st.write("""Character creation is more than just choosing a class; it’s about crafting an identity. From racial traits to personal backgrounds, every choice adds layers to a spellcaster's story like an onion. These 
-visualizations peel back the layers of the onion to reveal the most common races, backgrounds, and subclasses for each spellcasting class. These choices ultimately help players bring their characters to life.""")
+st.write("""Character creation is more than choosing a class; it is crafting an identity. These visuals highlight common races, backgrounds, and subclasses that bring each spellcaster to life.""")
 
 # Load dataset
 zip_path = "over_one_mil_chars.zip"
@@ -449,22 +418,19 @@ st.image(image_files[6], caption="", use_container_width=True)
 st.subheader("Context & Insights")
 
 st.write("""
-This radial bar chart showcases the top three most popular races chosen for each of the six spellcasting classes. In Dungeons & Dragons (D&D), **race** defines a 
-character's species and often provides specific traits, such as enhanced abilities, unique powers, or cultural background. Popular races like Humans, Elves, and 
-Tieflings dominate the chart, illustrating their overall synergy with spellcasting classes.
+This radial bar chart shows the top three races for each spellcasting class. In D&D, race provides traits and cultural flavor that shape a character's identity. Humans, Elves, and Tieflings appear often, reflecting their broad synergy with spellcasters.
 
 #### Key Observations:
-- **Wizards and Humans:** Humans are a popular race for Wizards, possibly due to their versatile ability bonuses, making them adaptable for any class.
-- **Half-Elves' Charismatic Affinity:** Half-Elves, known in-game for their charismatic boost, align well with spellcasters such as Bards and Sorcerers which use their charisma in order to cast spells.
-- **Tieflings and Warlocks:** Tieflings' dark heritage and inherent magical abilities make them a thematic fit for Warlocks who often make "deals with the devil."
+- **Wizards and Humans:** Versatile bonuses make Humans a safe, flexible pick.
+- **Half-Elves and Charisma Classes:** Half-Elves align well with Bards and Sorcerers.
+- **Tieflings and Warlocks:** Thematic fit reinforces the pact-based identity.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Counting Races by Class:** The dataset was grouped by `class_starting` and `race` to count the total number of players for each race-class combination.
-- **Ranking Top 3 Races:** Races for each class were ranked based on their player counts, and only the top three were retained for clarity.
-- **Mapping Race Angles:** Each race was assigned an angle to position it evenly around the radial chart, enabling a clear comparison.
+- **Counting and Ranking:** Races were grouped by class and the top three were retained.
+- **Radial Layout:** Each race was assigned an angle for even spacing.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -553,20 +519,19 @@ with st.expander("Top 3 Backgrounds for Each Spellcasting Class"):
 st.subheader("Context & Insights:")
 
 st.write("""
-This radial bar chart visualizes the top three most popular backgrounds chosen for each spellcasting class. In Dungeons & Dragons (D&D), a **background** represents a character's history, skills, and personal narrative, providing roleplaying opportunities and additional proficiencies. Popular backgrounds such as Sage, Acolyte, and Soldier frequently appear, reflecting their thematic alignment with spellcasting classes.
+This radial bar chart shows the top three backgrounds per spellcasting class. In D&D, a background reflects a character's history and skills. Sage, Acolyte, and Soldier appear often, aligning closely with classic spellcaster themes.
 
 #### Key Observations:
-- **Sage Dominates Wizards:** Sage, representing scholars and researchers, is an unsurprising favorite for Wizards due to their focus on knowledge and arcane studies.
-- **Acolytes and Clerics:** Thematically tied to divine service, the Acolyte is a natural match for Clerics as it reinforces their connection to gods and temples.
-- **Varied Preferences Among Bards:** Bards display diverse preferences with Entertainer and Folk Hero as frequently selected backgrounds. This highlighting their role as storytellers and performers in D&D.
+- **Wizards and Sage:** Scholars fit the wizard identity.
+- **Clerics and Acolyte:** Divine service reinforces their role.
+- **Bards and Entertainer/Folk Hero:** Storyteller backgrounds stand out.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Counting Backgrounds by Class:** Grouped data by `class_starting` and `background` to count the total number of players for each background-class combination.
-- **Ranking Top 3 Backgrounds:** Limited the dataset to the top three backgrounds for each class, based on player counts.
-- **Mapping Background Angles:** Similar to the previous chart, backgrounds were mapped to angles for placement in the radial chart.
+- **Counting and Ranking:** Backgrounds were grouped by class and the top three retained.
+- **Radial Layout:** Backgrounds were mapped to angles for spacing.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -630,25 +595,19 @@ with st.expander("Top 3 Subclasses for Each Spellcasting Class"):
 st.subheader("Context & Insights:")
 
 st.write("""
-This **sunburst chart** visualizes the top three most popular subclasses for each spellcasting class in Dungeons & Dragons (D&D). A **subclass** in D&D 
-defines a character's specialization within their main class, offering unique abilities and further customization. The chart demonstrates how almost 
-every spellcast class a very strong preference for one particular subclass, excluding druids. 
+This **sunburst chart** shows the top three subclasses for each spellcasting class. A **subclass** defines a class specialization and adds unique abilities. Most classes show a clear favorite, with Druids more evenly spread.
  
 #### Key Observations:
-- **Wizards and the School of Evocation:** The School of Evocation which focuses on powerful spells like Fireball, stands out as a dominant choice for Wizards. This school is an 
-obvious choice for Wizards who yearn for mastery over the art of destruction. 
-- **Clerics and Life Domain:** The Life Domain also tends to align with the "idea" of a Cleric as it emphasizes healing and support. Clerics often play the important role of healers 
-in any given party, making the Life Domain the clear frontrunner.
-- **Warlocks and The Fiend:** The Fiend subclass offers dark and destructive powers that perfectly align with the Warlock's theme of making pacts with evil entities. While all Warlock 
-subclasses typically involve a pact, The Fiend represents the standard. 
+- **Wizards and Evocation:** Direct damage and iconic spells keep Evocation popular.
+- **Clerics and Life Domain:** Healing and support align with core cleric play.
+- **Warlocks and The Fiend:** The classic pact theme remains a strong draw.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Counting Subclasses:** Grouped data by `class_starting` and `subclass_starting` to calculate the total number of players for each subclass-class combination.
-- **Ranking Top 3 Subclasses:** Ranked subclasses within each class based on player counts and limited to the top three for clarity.
-- **Mapping to Sunburst Path:** Created a hierarchical path (`class_starting` → `subclass_starting`) to structure the sunburst visualization.
+- **Counting and Ranking:** Subclasses were grouped by class and the top three retained.
+- **Sunburst Path:** Built the `class_starting -> subclass_starting` hierarchy.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -743,26 +702,20 @@ st.image(image_files[7], caption="", use_container_width=True)
 st.subheader("Context & Insights:")
 
 st.write("""
-This **grouped bar chart** highlights the most popular spells for Levels 0, 1, and 2 across the six spellcasting classes in Dungeons & Dragons. This is the only chart that utilizes
-the smaller dataset as it contained spell data for each class. A **spell** in D&D represents a magical ability or 
-effect that a character can cast during a campaign. By analyzing these spells, we uncover inntruiging insights into how players utilize their lower level spells. At low player levels, the number of spells
-available to spellcasters is limited, meaning every spell holds great significance. Even at higher levels, when players can cast more spells, it is just as 
-important to have meaningful low-level spells which are casted at a higher frequency. 
+This **grouped bar chart** highlights the most popular spells for Levels 0, 1, and 2 across the six spellcasting classes. It is the only chart using the smaller dataset, which includes spell lists. Early-level spells matter because they are cast most often across a campaign.
 
 #### Key Observations:
 - **Clerics and Healing Dominance:** Spells like *Cure Wounds* and *Spiritual Weapon* dominate at early levels, cementing the Cleric's role as a healer and support class.
-- **Wizards and Offensive Power:** Spells such as *Fire Bolt* and *Magic Missile* highlight the Wizard’s offensive versatility, making them a staple in many campaigns. Magic Missle in 
-particular is invaluable to many Wizards as it is garunteed to hit the target in almost every instance.
-- **Unique Class Themes:** Each class’s popular spells reflect its thematic identity, such as *Eldritch Blast* for Warlocks and *Vicious Mockery* for Bards. Expanding upon Eldritch Blast, 
-Warlocks are able to bolster this spell later in the game so that it can reach farther, hit harder, and even physically push enemies away.
+- **Wizards and Offensive Power:** Spells like *Fire Bolt* and *Magic Missile* reflect their offensive versatility.
+- **Unique Class Themes:** Signature spells like *Eldritch Blast* and *Vicious Mockery* reinforce class identity.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Spell Parsing:** Extracted spell names and levels from the `processedSpells` column using a delimiter (*|*) and further split the details at an asterisk (*).
-- **Filtering by Levels:** Focused on Levels 0, 1, and 2 to simplify the analysis and showcase early-game spellcasting behavior.
-- **Top Spells per Class:** Grouped spells by class and level, then identified the most commonly used spell for each class at every level.
+- **Spell Parsing:** Extracted spell names and levels from `processedSpells`.
+- **Filtering by Levels:** Focused on Levels 0, 1, and 2.
+- **Top Spells per Class:** Identified the most common spell per class and level.
 """)
 
 
@@ -772,8 +725,7 @@ st.write("""
 
 st.header("Arc 3: Arcane Intricacies")
 
-st.write("""Beyond character creation, how do spellcasters function in gameplay? From gold distribution to spell preferences, these insights reveal the strategic decisions players make when shaping their spellcasting heroes. What resources do they prioritize? How much do they document 
-their journeys? Let’s take a closer look.""")
+st.write("""Beyond character creation, how do spellcasters function in play? From gold distribution to notes, these insights reveal what players prioritize and document.""")
 
 # Load dataset
 zip_path = "over_one_mil_chars.zip"
@@ -820,24 +772,19 @@ with st.expander("Average Gold per Spellcasting Class"):
 st.subheader("Context & Insights:")
 
 st.write("""
-This bar chart visualizes the **average amount of gold** possessed by characters in each of the six spellcasting classes in Dungeons & Dragons. 
-In the context of D&D, **gold** represents a character’s wealth, used to purchase equipment, magical items, or services. The distribution of gold provides 
-insight into how players prioritize resources for their characters.
+This bar chart shows **average gold** for each spellcasting class. In D&D, gold fuels equipment, spell components, and services, so the averages hint at how players prioritize resources.
 
 #### Key Observations:
-- **Wizards** have the highest average gold, possibly reflecting their need to purchase expensive spell components or scrolls. In order to copy down new spells 
-into their book, they need gold, something that is much unlike the other spellcasting classes.
-- **Sorcerers and Warlocks** follow closely, showcasing their affinity for acquiring magical items or services to enhance their innate powers.
-- **Bards and Druids** have comparatively lower averages, possibly due to their reliance on versatility and innate class abilities rather than purchased items. Druids in particular
-are known to commune with nature rather than get involved with the monetary value of things.
+- **Wizards** lead, likely due to spell components and scroll costs.
+- **Sorcerers and Warlocks** follow, reflecting investment in magical power.
+- **Bards and Druids** sit lower, relying more on innate versatility.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Filtering Extreme Values:** Removed outliers by excluding characters with gold amounts exceeding 350,000, based on prior box plot analysis.
-- **Excluding Zero Values:** Removed entries with 0 gold to ensure meaningful average calculations, as characters with no recorded gold could distort insights.
-- **Calculating Averages:** Grouped by `class_starting` and calculated the mean gold for each class to highlight resource trends across spellcasters.
+- **Filtering Outliers:** Excluded gold > 350,000 and gold = 0.
+- **Averages:** Computed mean gold by `class_starting`.
 """)
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -901,24 +848,20 @@ with st.expander("Average Note Length per Spellcasting Class"):
 st.subheader("Context & Insights:")
 
 st.write("""
-This lollipop chart visualizes the **average length of personal notes** written by players for each of the six spellcasting classes. 
-In the context of D&D Beyond, where this data was pulled from, **notes** often represent detailed character backstories, motivations, or campaign-relevant information 
-that players use to deepen their roleplaying experience.
+This lollipop chart shows **average note length** by class. In D&D Beyond, notes often capture backstory and campaign details.
 
 #### Key Observations:
-- **Warlocks** have the longest average note length, possibly due to the intricate lore tied to their otherworldly patrons and the thematic emphasis on story-driven gameplay.
-- **Bards** follow closely, reflecting their narrative-heavy class identity, often involving performances and elaborate backstories.
-- **Clerics and Wizards** have relatively shorter notes, suggesting a more mechanics-focused approach compared to narrative emphasis. Something that stuck out
-to me about Wizards is the fact they are generally seen as the scribes of D&D. But, this data shows that the players behind
-the Wizards typically right less than players of other classes. 
+- **Warlocks** write the most, fitting their lore-heavy identity.
+- **Bards** follow, consistent with narrative-focused play.
+- **Clerics and Wizards** are shorter on average, suggesting a more mechanics-first approach.
 """)
 
 st.subheader("Relevant Transformations:")
 
 st.write("""
-- **Excluding Zero-Length Notes:** Removed entries where `notes_len` was 0 to focus on meaningful note contributions, as characters with no notes could distort averages.
-- **Calculating Averages:** Grouped data by `class_starting` and computed the mean note length for each class to provide a clear comparison.
-- **Lollipop Chart Construction:** Used a scatter plot combined with vertical lines to create a lollipop effect, enhancing visual clarity and aesthetic appeal.
+- **Exclude Zeros:** Removed entries with `notes_len` = 0.
+- **Averages:** Computed mean note length by class.
+- **Lollipop Layout:** Combined a scatter plot with vertical lines.
 """)
 
 # -----------------------------------------------------------
@@ -929,63 +872,40 @@ st.header("Reflection")
 
 st.subheader("How Did My Design Decisions Work for User Feedback and How Did They Fall Short?")
 st.write("""
-My design decisions were well-received by my test audience, primarily due to the clear organization of the visuals and the storytelling approach that made the data engaging and accessible. 
-Classmates appreciated the interactive nature of the graphs, especially the radial bar charts and sunburst charts, which offered unique perspectives on the data. Matching the colors to the 
-official D&D palette added an extra layer of immersion, making the visuals feel more thematic and aligned with the source material.
+Feedback was positive on organization, storytelling, and interactivity, especially the radial and sunburst charts. The D&D color palette helped the visuals feel authentic.
 
-However, one area of feedback I noted was the need for **additional graphs** to explore the dataset more comprehensively. While the visuals I presented were informative, they did not exhaust 
-the dataset's potential. Additionally, I personally recognized a need to improve the **labels** for clarity and precision. Some axes, titles, and legends could have been more descriptive to 
-ensure users fully understood what was being presented at first glance.
+The main critique was coverage: more graphs and clearer labels would improve first-glance comprehension.
 """)
 
 st.subheader("Failed Attempts at Visualization: How Did I Change Tactics to Improve Outcomes?")
 st.write("""
-One of the biggest changes I made during the project was limiting the number of variables being visualized. Initially, I aimed to include all 12 classes in D&D, but this led to chaotic and 
-unreadable graphs. By narrowing the focus to the six spellcasting classes, I was able to create cleaner and more meaningful visualizations that effectively highlighted trends.
+Early attempts to show all 12 classes were cluttered, so I narrowed the focus to six spellcasters. Radial bars required multiple layout tweaks for readability.
 
-Another significant challenge was creating **readable radial bar charts.** I went through several iterations before arriving at the final design, experimenting with angle spacing, bar widths, 
-and color schemes to strike the right balance of readability and aesthetic appeal.
-
-Switching to **Plotly** for graph creation was also a pivotal decision. Unlike static graphs, Plotly enabled interactivity, allowing users to explore data more dynamically by hovering over 
-elements for detailed insights. This interactivity enhanced the user experience and made the data more engaging.
+Switching to Plotly added interactivity that made exploration easier and more engaging.
 """)
 
 st.subheader("Where Might I Revise in Another Round of Iteration?")
 st.write("""
 If I had another round of iteration, I would:
-1. **Expand the Spell Analysis:** Rather than focusing solely on the top three spells for each class, I would include more spells to provide a deeper look into player preferences. 
-   This could involve analyzing spell usage by level or grouping spells by thematic categories.
-2. **Explore Alternative Graph Formats:** While the current visuals are effective, experimenting with less conventional formats, such as heatmaps or network graphs, could add variety and 
-   uncover new insights.
-3. **Refine Labeling Further:** Even though the current labels are functional, additional iterations could make them even clearer. For instance, providing concise tooltips or explanations 
-   within the charts might make the visuals even more user-friendly.
-4. **Investigate Multi-Class Characters:** Many D&D players experiment with multi-classing, which my dataset largely omits. Adding this dimension could significantly enrich the data story.
+1. Expand spell analysis beyond the top three, possibly by level or theme.
+2. Try alternative formats like heatmaps or network graphs.
+3. Tighten labels and tooltips for faster reading.
+4. Explore multiclass characters if data allows.
 """)
 
 st.subheader("Are There Any Stories My Current Work Occludes, Marginalizes, or Minimizes?")
 st.write("""
-Yes, there are some limitations in the current work:
-- **Spell Analysis Limitations:** Since the spell data came from the smaller dataset, the analysis was constrained by fewer data points. This limits the depth of insights into higher-level 
-  spells and rarer choices. A larger dataset would allow for a more comprehensive view.
-- **Marginalization of Non-Spellcasting Classes:** By focusing on the six spellcasting classes, the story excludes valuable data about the remaining six non-spellcasting classes, such as 
-  Fighters and Rogues. While this was necessary for clarity, it minimizes their role in the broader D&D landscape.
-- **Economic and Social Contexts:** The analysis could explore how player access to supplemental D&D materials (e.g., paywalled expansions) skews the dataset, potentially underrepresenting 
-  certain player demographics. Including this context might offer a fuller understanding of the biases in the dataset.
+Yes, there are limits that shape the story:
+- **Smaller spell dataset:** Fewer data points limit higher-level spell insights.
+- **Non-spellcasting classes omitted:** Fighters, Rogues, and others are absent for clarity.
+- **Paywalled content bias:** Free options may be overrepresented.
 
-An alternative direction for this work could involve expanding the scope to include all classes, analyzing paywalled versus free content, or delving deeper into how player demographics 
-influence character creation.
+Future work could expand class coverage, compare free vs paid content, and explore player demographics.
 """)
 
 st.subheader("What Did I Like Best About Learning How to Create Data Narratives?")
 st.write("""
-One of my favorite aspects of this project was discovering and experimenting with different visualization techniques, such as **radial bar charts** and **sunburst charts.** These formats were 
-not only visually striking but also provided unique ways to explore relationships in the data.
-
-I particularly enjoyed matching the visuals to the **official D&D color palette**, which added thematic coherence and made the project feel more authentic. It was satisfying to bring the 
-essence of D&D into the data story through aesthetics and design choices.
-
-Lastly, learning how to effectively combine interactivity with storytelling was a rewarding challenge. It demonstrated how data can be transformed from abstract numbers into a compelling 
-narrative that engages and informs the audience.
+I enjoyed experimenting with radial and sunburst charts, and aligning visuals with the official D&D palette. Combining interactivity with storytelling was especially rewarding.
 """)
 
 st.subheader("References")
